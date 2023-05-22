@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "87466982-6a76-49e9-964e-de29826fa39c",
+		"name": "js-technical-test",
+		"description": "a API que conta o número de acessos ao site do Ton usando a API  \n(https://countapi.xyz) e permitir que um usuário crie uma conta.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1054289"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Criar Usuário (/users)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Nathalia 1'\",\n  \"email\": \"nathalia.chaves1@gmail.com\",\n  \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint_url_aws}}/users",
+							"host": [
+								"{{endpoint_url_aws}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Substitua a [https://0yeiw4iez9.execute-api.us-east-2.amazonaws.com/prod/](https://0yeiw4iez9.execute-api.us-east-2.amazonaws.com/prod/) pela url correspondente a rota gerada após fazer make build."
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar Usuario (/authentication)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"strategy\": \"local\",\n    \"email\": \"nathalia.chaves1@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://0yeiw4iez9.execute-api.us-east-2.amazonaws.com/prod/authentication",
+							"protocol": "https",
+							"host": [
+								"0yeiw4iez9",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"authentication"
+							]
+						},
+						"description": "Substitua a [https://0yeiw4iez9.execute-api.us-east-2.amazonaws.com/prod/](https://desktop.postman.com/?desktopVersion=10.13.0&userId=1054289&teamId=3909124) pela url correspondente a rota gerada após fazer make build."
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Usuario (/users/:uuid)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "colocar-token-aqui",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint_url_aws}}//users/3cd7794d-1a4c-4c8d-b498-698845a827dc",
+							"host": [
+								"{{endpoint_url_aws}}"
+							],
+							"path": [
+								"",
+								"users",
+								"3cd7794d-1a4c-4c8d-b498-698845a827dc"
+							]
+						},
+						"description": "Substitua a [https://0yeiw4iez9.execute-api.us-east-2.amazonaws.com/prod/](https://desktop.postman.com/?desktopVersion=10.13.0&userId=1054289&teamId=3909124) pela url correspondente a rota gerada após fazer make build."
+					},
+					"response": []
+				}
+			],
+			"description": "Serviço para cadastrar, autenticar e consultar dados do usuário."
+		},
+		{
+			"name": "Visitas",
+			"item": [
+				{
+					"name": "Obter total de visitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://4mresuzr2m.execute-api.us-east-2.amazonaws.com/prod/visits",
+							"protocol": "https",
+							"host": [
+								"4mresuzr2m",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"visits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incrementar visitas",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://0yeiw4iez9.execute-api.us-east-2.amazonaws.com/prod/visits",
+							"protocol": "https",
+							"host": [
+								"0yeiw4iez9",
+								"execute-api",
+								"us-east-2",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"visits"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Consulta a API externa https://countapi.xyz e caso consiga capturar o valor, armazena na tabela local."
+		}
+	]
+}
